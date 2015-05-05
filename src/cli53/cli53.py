@@ -158,7 +158,7 @@ class BindToR53Formatter(object):
                 rr_vals_to_delete = []
                 for rr_value in rr_data[rr_name]['TXT']['RRS']:
                     if re_awsalias.search(unquote(rr_value)):
-                        (_, hosted_zone_id, dns_name) = unquote(rr_value).split(':')
+                        (_, hosted_zone_id, dns_name, eval_health) = unquote(rr_value).split(':')
                         # remove the awsalias from the TXT record set
                         rr_vals_to_delete.append(rr_value)
                         # add as an A record with an alias target
@@ -167,6 +167,7 @@ class BindToR53Formatter(object):
                         rr_data[rr_name]['A']['AliasTarget'] = {}
                         rr_data[rr_name]['A']['AliasTarget']['HostedZoneId'] = hosted_zone_id
                         rr_data[rr_name]['A']['AliasTarget']['DNSName'] = dns_name
+                        rr_data[rr_name]['A']['AliasTarget']['EvaluateTargetHealth'] = eval_health
                 for rr_value in rr_vals_to_delete:
                     del(rr_data[rr_name]['TXT']['RRS'][
                         rr_data[rr_name]['TXT']['RRS'].index(rr_value)])
