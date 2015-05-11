@@ -196,7 +196,7 @@ class BindToR53Formatter(object):
                             rr_data[rr_name][rr_type]['AliasTarget']['HostedZoneId'])
                     text_element(alias_target, 'DNSName',
                             rr_data[rr_name][rr_type]['AliasTarget']['DNSName'])
-                    text_element(alias_target, 'DNSName',
+                    text_element(alias_target, 'EvaluateTargetHealth',
                             rr_data[rr_name][rr_type]['AliasTarget']['EvaluateTargetHealth'])
                 else:
                     text_element(resource_record_set, 'TTL', rr_data[rr_name][rr_type]['TTL'])
