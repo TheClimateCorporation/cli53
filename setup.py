@@ -13,7 +13,7 @@ setup(
     install_requires=[
         'boto',
         'dnspython',
-        'elementtree',
+        'lxml',
         'uuid',
         ],
     entry_points={
